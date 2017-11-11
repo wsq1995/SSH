@@ -1,3 +1,5 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <HTML>
 <HEAD>
@@ -98,7 +100,8 @@
                                             <tr>
                                                 <td width="51" valign="middle">
                                                     <font color="#FFFFFF">
-                                                        欢迎您： Denny
+                                                            <%--欢迎您:${requestScope.lists.loginName}--%>
+                                                            欢迎您:${sessionScope.get("loginName")}
                                                     </font>
                                                 </td>
                                             </tr>

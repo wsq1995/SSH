@@ -34,7 +34,6 @@ public class BaseAction<T, S> extends ActionSupport implements ModelDriven<T> {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

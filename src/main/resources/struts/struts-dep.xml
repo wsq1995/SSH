@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--开发者模式-->
+    <constant name="struts.devMode" value="true"/>
+    <package name="dep" extends="ssh">
+
+
+        <action name="save" class="depAction" method="save">
+            <result name="success" type="chain">list</result>
+        </action>
+
+        <action name="pass">
+            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
+        </action>
+
+        <action name="list" class="depAction" method="listDep">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
+        <action name="editDep" class="depAction" method="editDep">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
+
+
+
+
+
+
+    </package>
+
+
+</struts>
