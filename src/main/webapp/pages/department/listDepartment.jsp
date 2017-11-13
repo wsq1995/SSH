@@ -40,11 +40,11 @@
         <td width="6%" align="center">部门名称</td>
         <td width="7%" align="center">编辑</td>
     </tr>
-    <s:iterator value="deps">
+    <s:iterator value="deps" var="dept">
         <tr class="tabtd1">
-            <td align="center">${depName}</td>
+            <td align="center">${dept.depName}</td>
             <td width="7%" align="center">
-                <a href="pass.action?depId=${depId}">
+                <a href="pass.action?depID=${dept.depID}">
                     <img src="${pageContext.request.contextPath}/images/button/modif.gif" class="img"/>
                 </a>
             </td>

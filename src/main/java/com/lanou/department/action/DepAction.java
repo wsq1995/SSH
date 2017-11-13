@@ -2,7 +2,6 @@ package com.lanou.department.action;
 
 import com.lanou.department.service.DepService;
 import com.lanou.staff.domain.Department;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -22,10 +21,12 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
     private String depName;
     private List<Department> deps;
 
+
     //    添加部门
     public String save() {
-        deps = depService.save(department);
-        ActionContext.getContext().put("dep", deps);
+        System.out.println(department);
+        depService.save(department);
+//        ActionContext.getContext().put("dep", deps);
         return SUCCESS;
     }
 
@@ -35,13 +36,11 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
         return SUCCESS;
     }
 
-//    编辑部门
-    public String editDep(){
+    //    编辑部门
+    public String editDep() {
         depService.editDep(department);
         return SUCCESS;
     }
-
-
 
 
     public void setDepService(DepService depService) {

@@ -9,25 +9,25 @@
     <constant name="struts.devMode" value="true"/>
     <package name="dep" extends="ssh">
 
-
+        <!--保存方法-->
         <action name="save" class="depAction" method="save">
-            <result name="success" type="chain">list</result>
+            <result name="success" type="redirectAction">list</result>
         </action>
 
-        <action name="pass">
-            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
-        </action>
-
-        <action name="list" class="depAction" method="listDep">
-            <result name="success">/pages/department/listDepartment.jsp</result>
-        </action>
-
+        <!--编辑部门-->
         <action name="editDep" class="depAction" method="editDep">
             <result name="success">/pages/department/listDepartment.jsp</result>
         </action>
 
+        <!--查找所有部门-->
+        <action name="list" class="depAction" method="listDep">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
 
 
+        <action name="pass" class="depAction">
+            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
+        </action>
 
 
 

@@ -34,12 +34,12 @@
     </tr>
 </table>
 
-<form action="save.action" method="post">
+<form action="save.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
-            <td>部门名称：</td>
+            <td>部门名称:</td>
             <td><input type="text" name="depName"/></td>
-            <td><input type="hidden" name="depId" value="${depId}"/></td>
+            <td><input type="hidden" name="depID" value="${model.depID}"/></td>
         </tr>
     </table>
 </form>

@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-    <package name="ssh" extends="struts-default">
+    <package name="ssh" extends="json-default">
         <!--<interceptors>-->
             <!--<interceptor name="staffActionInterceptor" class="com.lanou.staff.interceptor.StaffActionInterceptor"/>-->
             <!--<interceptor-stack name="myInterceptorStack">-->
@@ -21,5 +21,6 @@
     </package>
 
     <include file="struts/struts-dep.xml"/>
+    <include file="struts/struts-post.xml"/>
 
 </struts>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="post" extends="ssh">
+
+        <!--查询职务-->
+        <action name="queryPost" class="postAction" method="queryPost">
+            <result name="success">/pages/post/listPost.jsp</result>
+        </action>
+
+        <!--添加职务-->
+        <action name="addPost" class="postAction" method="addPost">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+        </action>
+
+        <!--post里的查询所有部门-->
+        <action name="postDep" class="depAction" method="listDep">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+        </action>
+
+        <!--编辑职务-->
+        <action name="editPost" class="postAction" method="editPost">
+            <result name="success">/pages/post/listPost.jsp</result>
+        </action>
+
+        <!--<action name="throw" class="postAction">-->
+            <!--<result name="success" type="redirectAction">editPost</result>-->
+        <!--</action>-->
+    </package>
+
+
+</struts>

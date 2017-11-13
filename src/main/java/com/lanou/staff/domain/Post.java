@@ -59,8 +59,9 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
-                "postId=" + postId +
+                "postId='" + postId + '\'' +
                 ", postName='" + postName + '\'' +
+                ", dep=" + dep +
                 '}';
     }
 }
