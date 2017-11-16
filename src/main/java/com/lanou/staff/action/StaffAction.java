@@ -1,12 +1,15 @@
 package com.lanou.staff.action;
 
+import com.lanou.department.service.DepService;
 import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 import com.lanou.staff.domain.Staff;
 import com.lanou.staff.service.StaffService;
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -21,7 +24,7 @@ import java.util.List;
 @Scope("prototype")
 public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     private Staff staff = new Staff();
-    private Department deps;
+
     //    用来接收前端页面传过来的值
     private String loginName;
     private String loginPwd;
@@ -30,12 +33,19 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     private String depID;
     private String postId;
     private String staffId;
+    private String find_staffId;
+    private String staffName;
 
     @Resource
     private StaffService staffService;
+
     private List<Staff> staffs;
     private List<Post> posts1;
+    private List<Department> deps;
+    //    这个是editStaff.jsp页面取到的值
+    private Staff staffId1;
 
+    //    登录
     public String login() {
         staffs = staffService.login(staff);
         ActionContext.getContext().getSession().put("loginName", staffs.get(0).getLoginName());
@@ -49,6 +59,7 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     //    查询员工
     public String query() {
         staffs = staffService.query();
+        ActionContext.getContext().put("sta",staffs);
         return SUCCESS;
     }
 
@@ -65,7 +76,7 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
             staff.setPost(new Post(postId));
             staffs = staffService.saveStaff(staff);
         } else {
-            staffService.saveOrUpdate(staff);
+            saveOrUpDate();
         }
         return SUCCESS;
     }
@@ -76,12 +87,26 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
         return SUCCESS;
     }
 
+    @Resource
+    private DepService depService;
+
+    //    查询员工id
+    public String findStaffId() {
+        deps = depService.listDep();
+        staffId1 = staffService.findStaffId(find_staffId);
+        return SUCCESS;
+    }
+
+    //    高级查询
+    public String advancedQuery() {
+        staffService.advancedQuery(depID, postId, staffName);
+        return SUCCESS;
+    }
 
     @Override
     public Staff getModel() {
         return staff;
     }
-
 
     public Staff getStaff() {
         return staff;
@@ -123,14 +148,6 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
         this.loginPwd = loginPwd;
     }
 
-    public Department getDeps() {
-        return deps;
-    }
-
-    public void setDeps(Department deps) {
-        this.deps = deps;
-    }
-
     public String getDepID() {
         return depID;
     }
@@ -157,5 +174,33 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 
     public void setStaffId(String staffId) {
         this.staffId = staffId;
+    }
+
+    public String getFind_staffId() {
+        return find_staffId;
+    }
+
+    public void setFind_staffId(String find_staffId) {
+        this.find_staffId = find_staffId;
+    }
+
+    public List<Department> getDeps() {
+        return deps;
+    }
+
+    public Staff getStaffId1() {
+        return staffId1;
+    }
+
+    public void setStaffId1(Staff staffId1) {
+        this.staffId1 = staffId1;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
     }
 }

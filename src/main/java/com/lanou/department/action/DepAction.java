@@ -21,11 +21,11 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
     private DepService depService;
     private String depName;
     private List<Department> deps;
+    private String staffId;
 
 
     //    添加部门
     public String save() {
-        System.out.println(department);
         depService.save(department);
 //        ActionContext.getContext().put("dep", deps);
         return SUCCESS;
@@ -63,6 +63,14 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
 
     public void setDeps(List<Department> deps) {
         this.deps = deps;
+    }
+
+    public String getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 
     @Override

@@ -7,11 +7,17 @@
     <package name="staff" extends="ssh">
         <!--查询员工-->
         <action name="query" class="staffAction" method="query">
-            <result name="success">/pages/staff/listStaff.jsp</result>
+            <result name="success" type="chain">high</result>
         </action>
 
         <action name="listStaff" class="depAction" method="listDep">
             <result name="success">/pages/staff/addStaff.jsp</result>
+        </action>
+
+
+        <!--将查询部门的方法转到staff/edit.jsp-->
+        <action name="editStaff" class="depAction" method="listDep">
+            <result name="success">/pages/staff/editStaff.jsp</result>
         </action>
 
         <!--转成json文件-->
@@ -30,13 +36,39 @@
             <result name="success" type="redirectAction">query</result>
         </action>
 
-        <action name="middle" class="staffAction">
+        <action name="middle" class="staffAction" method="findStaffId">
             <result name="success">/pages/staff/editStaff.jsp</result>
         </action>
 
+        <!--修改员工-->
         <action name="saveOrUpDate" class="staffAction" method="saveOrUpDate">
             <result name="success" type="redirectAction">query</result>
         </action>
+
+        <!--将查询部门方法转到staff/list.jsp中-->
+        <action name="high" class="depAction" method="listDep">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+
+        <!--高级查询-->
+        <action name="advancedQuery" class="staffAction" method="advancedQuery">
+            <result name="success" type="json">
+                <param name="root">staffs</param>
+                <param name="includeProperties">
+                    \[\d\]\.staffId,
+                    \[\d\]\.loginName,
+                    \[\d\]\.staffName,
+                    \[\d\]\.gender,
+                    \[\d\]\.onDutyDate,
+                    \[\d\]\.post,
+                    \[\d\]\.post\.postName,
+                    \[\d\]\.post\.postId,
+                    \[\d\]\.post\.department\.depId,
+                    \[\d\]\.post\.department\.depName
+                </param>
+            </result>
+        </action>
+
     </package>
 
 </struts>

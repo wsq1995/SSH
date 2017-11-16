@@ -13,6 +13,9 @@ import java.util.List;
  */
 @Repository("staffDao")
 public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
+
+    private Staff getStaff;
+
     @Override
     public List<Staff> login(Staff staff) {
         String sql = "from Staff crm_staff where loginName=? and loginPwd=?";
@@ -44,7 +47,7 @@ public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
         String staffId = staff.getStaffId();
         if (staffId == null || staffId.isEmpty()) {
             getHibernateTemplate().save(staff);
-        }else {
+        } else {
             getHibernateTemplate().saveOrUpdate(staff);
         }
         return null;
@@ -55,6 +58,57 @@ public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
     public List<Staff> saveOrUpdata(Staff staff) {
         getHibernateTemplate().saveOrUpdate(staff);
         return null;
+    }
+
+    //    查询员工id
+    @Override
+    public Staff findStaffId(String staffId) {
+        String sql = "from Staff CRM_STAFF where staffId = ?";
+        List<Staff> list = (List<Staff>) getHibernateTemplate().find(sql, staffId);
+        for (Staff staff : list) {
+            getStaff = staff;
+        }
+        return getStaff;
+    }
+
+    //    高级查询
+    @Override
+    public void advancedQuery(String depID, String postId, String staffName) {
+//        三个都为空
+        if (depID == null || depID.isEmpty() && postId == null ||
+                postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+            String sql1 = "from Staff crm_staff";
+            getHibernateTemplate().find(sql1);
+//            前一个不为空,后两个为空
+        } else if (depID != null || !depID.isEmpty() && postId == null ||
+                postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+            String sql2 = "from Staff crm_staff where post.dep.depID = ?";
+            getHibernateTemplate().find(sql2, depID);
+
+//            前两个为空,后一个不为空
+        } else if (depID == null || depID.isEmpty() && postId == null ||
+                postId.isEmpty() && staffName != null || !staffName.isEmpty()) {
+            String sql3 = "from Staff crm_staff where staffName = ?";
+            getHibernateTemplate().find(sql3, staffName);
+
+//            前两个不为空,后一个为空
+        } else if (depID != null || !depID.isEmpty() && postId != null ||
+                !postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+            String sql4 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ?";
+            getHibernateTemplate().find(sql4, depID, postId);
+
+//            前一后一不为空,中间为空
+        } else if (depID != null || !depID.isEmpty() && postId == null ||
+                postId.isEmpty() && staffName != null || !staffName.isEmpty()) {
+            String sql5 = "from Staff crm_staff where post.dep.depID = ? and staffName = ?";
+            getHibernateTemplate().find(sql5, depID, staffName);
+
+//            都不为空
+        } else if (depID != null || !depID.isEmpty() && postId != null ||
+                !postId.isEmpty() && staffName != null || !staffName.isEmpty()) {
+            String sql6 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ? and staffName = ?";
+            getHibernateTemplate().find(sql6, depID, postId, staffName);
+        }
     }
 
 

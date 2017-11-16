@@ -18,12 +18,16 @@ public interface StaffService {
     //   根据部门id查询职务
     List<Post> findPostByDepID(String depID);
 
-//    添加员工
+    //    添加员工
     List<Staff> saveStaff(Staff staff);
 
-//    编辑员工
+    //    编辑员工
     List<Staff> saveOrUpdate(Staff staff);
 
+    //    查询员工id
+    Staff findStaffId(String staffId);
+    //    高级查询
+    void advancedQuery(String depID, String postId, String staffName);
 
 
 }

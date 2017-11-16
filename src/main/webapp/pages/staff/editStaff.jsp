@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -81,47 +82,41 @@
 
 <form action="saveOrUpDate.action" method="post">
 
-    <input type="hidden" name="staffId" value="2c9091c14c78e58b014c78e7ecd90007"/>
+    <input type="hidden" name="staffId" value="${staffId1.staffId}"/>
 
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
             <td>登录名：</td>
-            <td><input type="text" name="loginName" value="${staff.loginName}"/></td>
+            <td><input type="text" name="loginName" value="${staffId1.loginName}"/></td>
             <td>密码：</td>
-            <td><input type="password" name="loginPwd" value="${staff.loginPwd}"/></td>
+            <td><input type="password" name="loginPwd" value="${staffId1.loginPwd}"/></td>
         </tr>
-        <tr>
-            <td>姓名：</td>
-            <td><input type="text" name="staffName" value="${staff.staffName}"/></td>
-            <td>性别：</td>
-            <td>
-                <input type="radio" name="gender" checked="checked" value="男"/>男
-                <input type="radio" name="gender" value="女"/>女
-            </td>
-        </tr>
+        <td>姓名：</td>
+        <td><s:textfield name="staffName" value="%{#sta.staffName}"/></td>
+        <td>性别：</td>
+        <td>
+            <s:radio list="{'男','女'}" name="gender" value="%{#sta.gender}"/>
         <tr>
             <td width="10%">所属部门：</td>
             <td width="20%">
-                <select name="depId" onchange="changePost(value)">
+                <select name="post.dep.depID" onchange="changePost(value)">
                     <option value="">----请--选--择----</option>
-                    <%--<option value="ee050687bd1a4455a153d7bbb7000001" selected="selected">教学部</option>--%>
-                    <%--<option value="ee050687bd1a4455a153d7bbb7000002">咨询部</option>--%>
+                    <s:iterator value="deps" var="d">
+                        <option value="${d.depID}">${d.depName}</option>
+                    </s:iterator>
                 </select>
-
             </td>
             <td width="8%">职务：</td>
             <td width="62%">
-                <select name="crmPost.postId" id="postSelectId">
+                <select name="post.postId" id="postSelectId">
                     <option value="">----请--选--择----</option>
-                    <%--<option value="2c9091c14c78e58b014c78e6b34a0003">总监</option>--%>
-                    <%--<option value="2c9091c14c78e58b014c78e6d4510004" selected="selected">讲师</option>--%>
                 </select>
             </td>
         </tr>
         <tr>
             <td width="10%">入职时间：</td>
             <td width="20%">
-                <input type="text" name="onDutyDate" value="2012-02-12" readonly="readonly"
+                <input type="text" name="onDutyDate" value="${staffId1.onDutyDate}" readonly="readonly"
                        onfocus="c.showMoreDay=true; c.show(this);"/>
             </td>
             <td width="8%"></td>

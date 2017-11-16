@@ -22,11 +22,8 @@
         <td>
             <table border="0" width="100%" cellspacing="0" cellpadding="0" id="table2">
                 <tr>
-
                     <td background="${pageContext.request.contextPath}/images/topbg.jpg" valign="bottom">
-
                     </td>
-
                     <!-- 显示时间 -->
                     <td width="374" background="${pageContext.request.contextPath}/images/topbg.jpg" valign="top">
                         <table border="0" width="100%" cellspacing="0" cellpadding="0" id="table4">
@@ -73,7 +70,6 @@
                                                         </script>
                                                     </font>
                                                 </td>
-
                                             </tr>
                                         </table>
                                     </div>
@@ -100,7 +96,6 @@
                                             <tr>
                                                 <td width="51" valign="middle">
                                                     <font color="#FFFFFF">
-                                                            <%--欢迎您:${requestScope.lists.loginName}--%>
                                                             欢迎您:${sessionScope.get("loginName")}
                                                     </font>
                                                 </td>
