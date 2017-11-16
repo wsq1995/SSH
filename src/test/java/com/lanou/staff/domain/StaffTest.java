@@ -27,7 +27,7 @@ public class StaffTest {
         staff.setLoginPwd("123");
         staff.setLoginName("123");
         staff.setPost(post);
-        staffDao.add(staff);
+//        staffDao.add(staff);
     }
 
 

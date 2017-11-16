@@ -12,24 +12,22 @@
             <result name="success">/pages/post/listPost.jsp</result>
         </action>
 
-        <!--添加职务-->
-        <action name="addPost" class="postAction" method="addPost">
-            <result name="success">/pages/post/addOrEditPost.jsp</result>
-        </action>
-
         <!--post里的查询所有部门-->
         <action name="postDep" class="depAction" method="listDep">
             <result name="success">/pages/post/addOrEditPost.jsp</result>
         </action>
 
-        <!--编辑职务-->
-        <action name="editPost" class="postAction" method="editPost">
+
+        <!--添加职务-->
+        <action name="addPost" class="postAction" method="addPost">
             <result name="success">/pages/post/listPost.jsp</result>
         </action>
 
-        <!--<action name="throw" class="postAction">-->
-            <!--<result name="success" type="redirectAction">editPost</result>-->
-        <!--</action>-->
+
+        <action name="throw" class="postAction">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+        </action>
+
     </package>
 
 

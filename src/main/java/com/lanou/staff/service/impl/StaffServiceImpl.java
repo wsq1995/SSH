@@ -2,6 +2,7 @@ package com.lanou.staff.service.impl;
 
 import com.lanou.staff.dao.StaffDao;
 import com.lanou.staff.domain.Department;
+import com.lanou.staff.domain.Post;
 import com.lanou.staff.domain.Staff;
 import com.lanou.staff.service.StaffService;
 import org.springframework.stereotype.Service;
@@ -21,28 +22,31 @@ public class StaffServiceImpl implements StaffService {
         return staffDao.login(staff);
     }
 
+//    查询员工
     @Override
-    public List<Staff> query(Staff staff) {
-        List<Staff> list = staffDao.query(staff);
+    public List<Staff> query() {
+        List<Staff> list = staffDao.query();
         return list;
     }
 
+//    根据部门id查职务
     @Override
-    public List<Staff> update(Staff staff) {
+    public List<Post> findPostByDepID(String depID) {
+        return staffDao.findPostByDepID(depID);
+    }
+
+//    添加员工
+    @Override
+    public List<Staff> saveStaff(Staff staff) {
+        staffDao.saveStaff(staff);
         return null;
     }
 
+//    编辑员工
     @Override
-    public List<Staff> add(Staff staff) {
-
-        return null;
+    public List<Staff> saveOrUpdate(Staff staff) {
+        return staffDao.saveStaff(staff);
     }
-
-    @Override
-    public List<Staff> delete(Staff staff) {
-        return null;
-    }
-
 
     public void setStaffDao(StaffDao staffDao) {
         this.staffDao = staffDao;

@@ -9,7 +9,7 @@
     <constant name="struts.devMode" value="true"/>
     <package name="dep" extends="ssh">
 
-        <!--保存方法-->
+        <!--保存部门-->
         <action name="save" class="depAction" method="save">
             <result name="success" type="redirectAction">list</result>
         </action>
@@ -28,6 +28,9 @@
         <action name="pass" class="depAction">
             <result name="success">/pages/department/addOrEditDepartment.jsp</result>
         </action>
+
+
+
 
 
 

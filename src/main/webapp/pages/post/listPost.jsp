@@ -53,8 +53,7 @@
             <td align="center">${p.dep.depName}</td>
             <td align="center">${p.postName}</td>
             <td width="7%" align="center">
-                <a href="addPost.action?postId=${p.postId}&postName=${p.postName}
-                    &depID=${p.dep.depID}&depName=${p.dep.depName}">
+                <a href="throw.action?postId=${p.postId}&postName=${p.postName}&depID=${p.dep.depID}&depName=${p.dep.depName}">
                     <img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>
                 </a>
             </td>

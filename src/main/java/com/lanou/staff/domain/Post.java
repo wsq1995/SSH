@@ -15,14 +15,11 @@ public class Post {
     public Post() {
     }
 
-    public Post(String postId, String postName) {
+
+    public Post(String postId) {
         this.postId = postId;
-        this.postName = postName;
     }
 
-    public Post(String postName) {
-        this.postName = postName;
-    }
 
     public String getPostId() {
         return postId;

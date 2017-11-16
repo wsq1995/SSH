@@ -1,6 +1,7 @@
 package com.lanou.post.action;
 
 import com.lanou.post.service.PostService;
+import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -17,6 +18,8 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
 
     private String depID;
     private String depName;
+    private String postId;
+
 
     //    查询职务
     public String queryPost() {
@@ -24,17 +27,20 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
         return SUCCESS;
     }
 
-    //    添加职务
     public String addPost() {
-        posts = postService.addPost(post);
-        return SUCCESS;
+        //    添加职务
+        if (postId == null || postId.equals("")) {
+            post.setDep(new Department(depID));
+            posts = postService.addPost(post);
+            return SUCCESS;
+        } else {
+            //    编辑职务
+            post.setDep(new Department(depID));
+            postService.editPost(post);
+            return SUCCESS;
+        }
     }
 
-//    编辑职务
-    public String editPost(){
-        postService.editPost(post);
-        return SUCCESS;
-    }
 
     @Override
     public Post getModel() {
@@ -79,5 +85,13 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
 }

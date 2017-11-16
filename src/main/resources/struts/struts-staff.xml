@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="staff" extends="ssh">
+        <!--查询员工-->
+        <action name="query" class="staffAction" method="query">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+
+        <action name="listStaff" class="depAction" method="listDep">
+            <result name="success">/pages/staff/addStaff.jsp</result>
+        </action>
+
+        <!--转成json文件-->
+        <action name="listStaffToJson" class="staffAction" method="findPostByDepID">
+            <result name="success" type="json">
+                <!--指定需要转化成json的对象-->
+                <param name="root">posts1</param>
+                <!--过滤:剔除员工里面部门的职位属性,剔除员工里面部门的员工属性,剔除员工里面职位的员工属性,
+                剔除员工里面职位的部门属性-->
+                <param name="includeProperties">\[\d\]\.postId,\[\d\]\.postName</param>
+            </result>
+        </action>
+
+        <!--添加员工-->
+        <action name="saveStaff" class="staffAction" method="saveStaff">
+            <result name="success" type="redirectAction">query</result>
+        </action>
+
+        <action name="middle" class="staffAction">
+            <result name="success">/pages/staff/editStaff.jsp</result>
+        </action>
+
+        <action name="saveOrUpDate" class="staffAction" method="saveOrUpDate">
+            <result name="success" type="redirectAction">query</result>
+        </action>
+    </package>
+
+</struts>

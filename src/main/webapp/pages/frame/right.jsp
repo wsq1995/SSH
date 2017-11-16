@@ -54,5 +54,4 @@
             < / tr >
             < / table >
             < / div >
-            < / BODY > < /
-    HTML >
+            < / BODY > < / HTML >

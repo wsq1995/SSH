@@ -2,6 +2,7 @@ package com.lanou.department.action;
 
 import com.lanou.department.service.DepService;
 import com.lanou.staff.domain.Department;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -33,6 +34,7 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
     //    查询所有部门
     public String listDep() {
         deps = depService.listDep();
+        ActionContext.getContext().put("deps",deps);
         return SUCCESS;
     }
 

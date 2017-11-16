@@ -20,8 +20,8 @@ public class Department {
         this.depName = depName;
     }
 
-    public Department(String depName) {
-        this.depName = depName;
+    public Department(String depID) {
+        this.depID = depID;
     }
 
     public String getDepID() {

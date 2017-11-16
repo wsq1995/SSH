@@ -34,16 +34,21 @@
     </tr>
 </table>
 
-<form action="addPost.action" method="post">
+<form action="addPost.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
             <td>选择部门：</td>
             <td>
-                <select name="depID">
+                <select name="dep.depID">
                     <option value="depID">${depName}</option>
                     <option value="-1">----请--选--择----</option>
                     <s:iterator value="deps" var="dep">
-                        <option value="${dep.depID}">${dep.depName}</option>
+                        <s:if test="dep.depID==depID">
+                            <option value="${dep.depID}" SELECTED="selected">${dep.depName}</option>
+                        </s:if>
+                        <s:else>
+                            <option value="${dep.depID}">${dep.depName}</option>
+                        </s:else>
                     </s:iterator>
                 </select>
             </td>

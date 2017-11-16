@@ -14,10 +14,10 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     @Override
     public List<Post> addPost(Post post) {
         String postId = post.getPostId();
-        if (postId == null || post.getPostId().isEmpty()) {
+//        如果id为空,就添加职务,不为空,就编辑职务
+        if (postId == null || postId.isEmpty()) {
             getHibernateTemplate().save(post);
         } else {
-//            如果id不为空,就走编辑方法
             getHibernateTemplate().saveOrUpdate(post);
         }
         return null;

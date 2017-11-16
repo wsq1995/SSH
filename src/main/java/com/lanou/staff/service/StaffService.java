@@ -1,6 +1,7 @@
 package com.lanou.staff.service;
 
 import com.lanou.staff.domain.Department;
+import com.lanou.staff.domain.Post;
 import com.lanou.staff.domain.Staff;
 
 import java.util.List;
@@ -10,10 +11,19 @@ import java.util.List;
  */
 public interface StaffService {
     List<Staff> login(Staff staff);
-    List<Staff> query(Staff staff);
-    List<Staff> update(Staff staff);
-    List<Staff> add(Staff staff);
-    List<Staff> delete(Staff staff);
+
+    //    查询员工
+    List<Staff> query();
+
+    //   根据部门id查询职务
+    List<Post> findPostByDepID(String depID);
+
+//    添加员工
+    List<Staff> saveStaff(Staff staff);
+
+//    编辑员工
+    List<Staff> saveOrUpdate(Staff staff);
+
 
 
 }

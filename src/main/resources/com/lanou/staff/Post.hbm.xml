@@ -8,8 +8,8 @@
             <generator class="uuid"/>
         </id>
         <property name="postName"/>
-        <many-to-one name="dep" class="Department" column="DEPT_ID" cascade="save-update" lazy="false"/>
-        <set name="staffs" table="crm_staff" cascade="save-update" inverse="true">
+        <many-to-one name="dep" class="Department" column="DEPT_ID" lazy="false"/>
+        <set name="staffs" table="crm_staff" lazy="false">
             <key column="POST_ID"></key>
             <one-to-many class="Staff"/>
         </set>

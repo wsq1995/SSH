@@ -16,7 +16,6 @@ public class DepDaoImpl extends HibernateDaoSupport implements DepDao {
     @Override
     public List<Department> save(Department department) {
         String depID = department.getDepID();
-
         if (depID == null || depID.isEmpty()) {
             getHibernateTemplate().save(department);
         } else {

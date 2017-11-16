@@ -12,9 +12,8 @@
         <property name="staffName"/>
         <property name="gender"/>
         <property name="onDutyDate"/>
-        <many-to-one name="dep" class="Department" cascade="save-update" column="DEPT_ID" lazy="false"/>
-        <many-to-one name="post" class="Post" column="POST_ID" cascade="save-update" lazy="false"/>
-
+        <many-to-one name="dep" class="Department" column="DEPT_ID" lazy="false"/>
+        <many-to-one name="post" class="Post" column="POST_ID" lazy="false"/>
 
     </class>
 
