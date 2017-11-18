@@ -17,4 +17,7 @@ public interface DepDao {
 //    编辑部门
     void editDep(Department department);
 
+//    通过id查找部门
+    List<Department> findDepID(String depID);
+
 }

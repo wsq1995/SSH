@@ -8,12 +8,15 @@ import java.util.List;
  * Created by dllo on 17/11/11.
  */
 public interface PostService {
-//    添加职务
+    //    添加职务
     List<Post> addPost(Post post);
 
-//    查询职务
+    //    查询职务
     List<Post> queryPost(Post post);
 
-//    编辑职务
+    //    编辑职务
     void editPost(Post post);
+
+    //    根据部门id找职务
+    List<Post> findPostToDepID(String depID);
 }

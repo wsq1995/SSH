@@ -55,8 +55,8 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public void advancedQuery(String depID, String postId, String staffName) {
-        staffDao.advancedQuery(depID,postId,staffName);
+    public List<Staff> advancedQuery(String depID, String postId, String staffName) {
+        return staffDao.advancedQuery(depID,postId,staffName);
     }
 
     public void setStaffDao(StaffDao staffDao) {

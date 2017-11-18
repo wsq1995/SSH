@@ -37,5 +37,12 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         getHibernateTemplate().saveOrUpdate(post);
     }
 
+    @Override
+    public List<Post> findPostToDepID(String depID) {
+        String sql = "from Post crm_post where dep.depID = ?";
+        List<Post> posts = (List<Post>) getHibernateTemplate().find(sql, depID);
+        return posts;
+    }
+
 
 }

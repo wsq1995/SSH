@@ -28,6 +28,12 @@
             <result name="success">/pages/post/addOrEditPost.jsp</result>
         </action>
 
+        <!--根据部门id找职务-->
+        <action name="findPostToDepID" class="postAction" method="findPostToDepID">
+            <result name="success" type="redirectAction">postDep</result>
+        </action>
+
+
     </package>
 
 

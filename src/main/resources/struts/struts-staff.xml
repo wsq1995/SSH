@@ -54,18 +54,6 @@
         <action name="advancedQuery" class="staffAction" method="advancedQuery">
             <result name="success" type="json">
                 <param name="root">staffs</param>
-                <param name="includeProperties">
-                    \[\d\]\.staffId,
-                    \[\d\]\.loginName,
-                    \[\d\]\.staffName,
-                    \[\d\]\.gender,
-                    \[\d\]\.onDutyDate,
-                    \[\d\]\.post,
-                    \[\d\]\.post\.postName,
-                    \[\d\]\.post\.postId,
-                    \[\d\]\.post\.department\.depId,
-                    \[\d\]\.post\.department\.depName
-                </param>
             </result>
         </action>
 

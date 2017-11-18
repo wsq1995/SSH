@@ -1,10 +1,10 @@
 package com.lanou.department.action;
 
+import com.lanou.base.BaseAction;
+import com.lanou.department.dao.DepDao;
 import com.lanou.department.service.DepService;
 import com.lanou.staff.domain.Department;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,48 +13,37 @@ import java.util.List;
  * Created by dllo on 17/11/10.
  */
 
-public class DepAction extends ActionSupport implements ModelDriven<Department> {
+public class DepAction extends BaseAction<Department, DepService> {
 
-    private Department department = new Department();
-
-    @Resource
-    private DepService depService;
-    private String depName;
     private List<Department> deps;
     private String staffId;
 
 
     //    添加部门
     public String save() {
-        depService.save(department);
-//        ActionContext.getContext().put("dep", deps);
+        service.save(getModel());
         return SUCCESS;
     }
 
     //    查询所有部门
     public String listDep() {
-        deps = depService.listDep();
-        ActionContext.getContext().put("deps",deps);
+        deps = service.listDep();
+        ActionContext.getContext().getSession().put("deps", deps);
         return SUCCESS;
     }
 
     //    编辑部门
     public String editDep() {
-        depService.editDep(department);
+        service.editDep(getModel());
         return SUCCESS;
     }
 
-
-    public void setDepService(DepService depService) {
-        this.depService = depService;
-    }
-
-    public String getDepName() {
-        return depName;
-    }
-
-    public void setDepName(String depName) {
-        this.depName = depName;
+//    通过id查找部门
+    public String findDepID(){
+        List<Department> depID = service.findDepID(getModel().getDepID());
+        ActionContext.getContext().put("depId",depID.get(0));
+        System.out.println(depID);
+        return SUCCESS;
     }
 
     public List<Department> getDeps() {
@@ -73,8 +62,5 @@ public class DepAction extends ActionSupport implements ModelDriven<Department> 
         this.staffId = staffId;
     }
 
-    @Override
-    public Department getModel() {
-        return department;
-    }
+
 }

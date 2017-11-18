@@ -27,6 +27,6 @@ public interface StaffDao {
     Staff findStaffId(String staffId);
 
     //    高级查询
-    void advancedQuery(String depID, String postId, String staffName);
+    List<Staff> advancedQuery(String depID, String postId, String staffName);
 
 }

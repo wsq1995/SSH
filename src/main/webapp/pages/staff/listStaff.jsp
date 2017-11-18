@@ -68,7 +68,7 @@
             var td = document.createElement("td");
             td.setAttribute("align", "center");
             var a = document.createElement("a");
-            a.setAttribute("href", "${pageContext.request.contextPath}findByStaffId.action?staffId=" + text1);
+            a.setAttribute("href", "${pageContext.request.contextPath}editStaff.action?staffId=" + text1);
             var textNode = document.createElement("img");
             textNode.setAttribute("src", "${pageContext.request.contextPath}/images/button/modify.gif");
             textNode.setAttribute("class", "img");
@@ -100,7 +100,6 @@
                     }
                     for (var j = 0; j < json.length; j++) {
                         var tr = document.createElement("tr");
-
                         tr.appendChild(createTD(json[j].staffName));
                         tr.appendChild(createTD(json[j].gender));
                         tr.appendChild(createTD(json[j].onDutyDate));
@@ -141,7 +140,6 @@
 </table>
 
 <!-- 查询条件：马上查询 -->
-<%--<form id="conditionFormId" action="high.action" method="post">--%>
 <form id="conditionFormId" action="${pageContext.request.contextPath}/staff/staffAction_findAll" method="post">
     <table width="88%" border="0" style="margin: 20px;">
         <tr>
@@ -184,7 +182,7 @@
         <td width="10%" align="center">职务</td>
         <td width="10%" align="center">编辑</td>
     </tr>
-<tbody id="tb">
+    <tbody id="tb">
     <s:iterator value="#sta" var="sttt">
         <tr class="tabtd1">
             <td align="center">${sttt.staffName}</td>
@@ -198,7 +196,7 @@
             </td>
         </tr>
     </s:iterator>
-</tbody>
+    </tbody>
 </table>
 
 <%--<table border="0" cellspacing="0" cellpadding="0" align="center">--%>

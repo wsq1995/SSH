@@ -27,7 +27,7 @@ public class BaseAction<T, S> extends ActionSupport implements ModelDriven<T> {
         Class modelclass = (Class) typeArguments[0];
         try {
 //        根据反射创建出泛型的对象
-            model = (T) modelclass.getClass().newInstance();
+            model = (T) modelclass.newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -40,13 +40,13 @@ public class BaseAction<T, S> extends ActionSupport implements ModelDriven<T> {
         return model;
     }
 
-    //    向session存放数据
+//    向session存放数据
     public void sessionPut(String key, Object value) {
         ActionContext.getContext().getSession().put(key, value);
     }
 
     public void requestPut(String key, Object value) {
-        ServletActionContext.getRequest().setAttribute(key,value);
+        ServletActionContext.getRequest().setAttribute(key, value);
     }
 
 

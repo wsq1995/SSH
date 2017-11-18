@@ -2,37 +2,20 @@ package com.lanou.staff.interceptor;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
+import org.apache.struts2.ServletActionContext;
 
 /**
  * Created by dllo on 17/11/10.
  */
-public class StaffActionInterceptor extends AbstractInterceptor {
-    private String loginName;
-    private String loginPwd;
+public class StaffActionInterceptor extends MethodFilterInterceptor{
 
     @Override
-    public String intercept(ActionInvocation invocation) throws Exception {
-        if (loginName == null || loginName.equals("") && loginPwd == null || loginPwd.equals("")){
+    protected String doIntercept(ActionInvocation actionInvocation) throws Exception {
+        String attribute = (String) ServletActionContext.getServletContext().getAttribute("loginName");
+        if ("".equals(attribute)){
             return "input";
         }
-        else {
-            return invocation.invoke();
-        }
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getLoginPwd() {
-        return loginPwd;
-    }
-
-    public void setLoginPwd(String loginPwd) {
-        this.loginPwd = loginPwd;
+        return actionInvocation.invoke();
     }
 }

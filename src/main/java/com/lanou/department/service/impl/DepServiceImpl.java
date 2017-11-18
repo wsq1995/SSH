@@ -32,6 +32,12 @@ public class DepServiceImpl implements DepService {
         depDao.editDep(department);
     }
 
+//    通过id查找部门
+    @Override
+    public List<Department> findDepID(String depID) {
+        return depDao.findDepID(depID);
+    }
+
     public void setDepDao(DepDao depDao) {
         this.depDao = depDao;
     }

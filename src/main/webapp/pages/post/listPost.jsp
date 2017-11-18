@@ -41,7 +41,6 @@
 </table>
 
 <table width="100%" border="1">
-
     <tr class="henglan" style="font-weight:bold;">
         <td width="6%" align="center">部门名称</td>
         <td width="6%" align="center">职务名称</td>
@@ -53,7 +52,7 @@
             <td align="center">${p.dep.depName}</td>
             <td align="center">${p.postName}</td>
             <td width="7%" align="center">
-                <a href="throw.action?postId=${p.postId}&postName=${p.postName}&depID=${p.dep.depID}&depName=${p.dep.depName}">
+                <a href="findPostToDepID.action?postId=${p.postId}&postName=${p.postName}&dep.depID=${p.dep.depID}&dep.depName=${p.dep.depName}">
                     <img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>
                 </a>
             </td>

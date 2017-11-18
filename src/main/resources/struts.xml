@@ -3,15 +3,38 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-    <package name="ssh" extends="json-default">
-        <!--<interceptors>-->
-            <!--<interceptor name="staffActionInterceptor" class="com.lanou.staff.interceptor.StaffActionInterceptor"/>-->
-            <!--<interceptor-stack name="myInterceptorStack">-->
-                <!--<interceptor-ref name="staffActionInterceptor"/>-->
-                <!--<interceptor-ref name="defaultStack"/>-->
-            <!--</interceptor-stack>-->
-        <!--</interceptors>-->
-        <!--<default-interceptor-ref name="myInterceptorStack"/>-->
+
+    <package name="Stack" extends="json-default">
+        <interceptors>
+            <interceptor name="StaffInterceptor" class="com.lanou.staff.interceptor.StaffActionInterceptor">
+                <param name="excludeMethods">login</param>
+            </interceptor>
+
+            <interceptor-stack name="myInterceptor">
+
+                <interceptor-ref name="StaffInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+
+            </interceptor-stack>
+        </interceptors>
+
+
+        <default-interceptor-ref name="myInterceptor"/>
+
+
+        <global-results>
+            <result name="input">/pages/login.jsp</result>
+        </global-results>
+
+    </package>
+
+
+
+
+
+
+    <package name="ssh" extends="Stack">
+
         <action name="staff" class="com.lanou.staff.action.StaffAction" method="login">
             <result name="success">/pages/frame.jsp</result>
             <result name="error">/pages/error.jsp</result>

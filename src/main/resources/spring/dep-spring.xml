@@ -19,7 +19,7 @@
     </bean>
 
     <bean id="depAction" class="com.lanou.department.action.DepAction" scope="prototype">
-        <property name="depService" ref="depService"/>
+        <property name="service" ref="depService"/>
     </bean>
 
 </beans>

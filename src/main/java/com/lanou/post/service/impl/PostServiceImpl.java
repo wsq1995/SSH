@@ -29,6 +29,11 @@ public class PostServiceImpl implements PostService{
         postDao.editPost(post);
     }
 
+    @Override
+    public List<Post> findPostToDepID(String depID) {
+        return postDao.findPostToDepID(depID);
+    }
+
 
     public PostDao getPostDao() {
         return postDao;

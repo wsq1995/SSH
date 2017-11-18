@@ -3,7 +3,6 @@ package com.lanou.department.dao.impl;
 import com.lanou.department.dao.DepDao;
 import com.lanou.staff.domain.Department;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -36,6 +35,14 @@ public class DepDaoImpl extends HibernateDaoSupport implements DepDao {
     @Override
     public void editDep(Department department) {
         getHibernateTemplate().saveOrUpdate(department);
+    }
+
+//    通过id查找部门
+    @Override
+    public List<Department> findDepID(String depID) {
+        String sql = "from Department crm_department where depID = ?";
+        List<Department> list = (List<Department>) getHibernateTemplate().find(sql,depID);
+        return list;
     }
 
 

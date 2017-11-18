@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,12 +35,21 @@
     </tr>
 </table>
 
-<form action="save.action" method="get">
+
+<%--<%--%>
+    <%--if (request.getParameter("depName") != null){--%>
+        <%--String newDep = request.getParameter("depName");--%>
+        <%--String newDepName = new String(newDep.getBytes("iso-8859-1"),"utf-8");--%>
+        <%--request.setAttribute("editDepNameJsp",newDepName);--%>
+    <%--}--%>
+<%--%>--%>
+
+<form action="editDep.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
             <td>部门名称:</td>
-            <td><input type="text" name="depName"/></td>
-            <td><input type="hidden" name="depID" value="${model.depID}"/></td>
+            <td><s:textfield name="depName" value="%{#depId.depName}"/> </td>
+            <td><s:hidden name="depId" value="%{#depId}"/> </td>
         </tr>
     </table>
 </form>

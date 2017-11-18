@@ -40,10 +40,9 @@
             <td>选择部门：</td>
             <td>
                 <select name="dep.depID">
-                    <option value="depID">${depName}</option>
                     <option value="-1">----请--选--择----</option>
                     <s:iterator value="deps" var="dep">
-                        <s:if test="dep.depID==depID">
+                        <s:if test="%{#dep.depID.equals(#session.postId.dep.depID)}">
                             <option value="${dep.depID}" SELECTED="selected">${dep.depName}</option>
                         </s:if>
                         <s:else>
@@ -53,7 +52,7 @@
                 </select>
             </td>
             <td>职务：</td>
-            <td><input type="text" name="postName" value="${postName}"/></td>
+            <td><s:textfield name="postId" value="%{#session.postId.postName}"/></td>
         </tr>
     </table>
 </form>
