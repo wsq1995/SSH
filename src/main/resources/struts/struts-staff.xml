@@ -57,6 +57,11 @@
             </result>
         </action>
 
+        <!--重新登录-->
+        <action name="reLogin" class="staffAction" method="reLogin">
+            <result name="success">/pages/login.jsp</result>
+        </action>
+
     </package>
 
 </struts>

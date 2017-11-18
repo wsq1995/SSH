@@ -2,19 +2,13 @@ package com.lanou.staff.action;
 
 import com.lanou.base.BaseAction;
 import com.lanou.department.service.DepService;
-import com.lanou.staff.dao.StaffDao;
 import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 import com.lanou.staff.domain.Staff;
 import com.lanou.staff.service.StaffService;
 import com.lanou.staff.utils.MD5Util;
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
-import com.sun.org.apache.bcel.internal.generic.GETFIELD;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -105,6 +99,12 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
         String staffName = getModel().getStaffName();
         staffService.advancedQuery(depId, postId, staffName);
         return SUCCESS;
+    }
+
+    //    重新登录
+    public String reLogin() {
+        ActionContext.getContext().getSession().remove("loginName");
+        return "success";
     }
 
     public StaffService getStaffService() {

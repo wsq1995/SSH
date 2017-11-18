@@ -35,21 +35,12 @@
     </tr>
 </table>
 
-
-<%--<%--%>
-    <%--if (request.getParameter("depName") != null){--%>
-        <%--String newDep = request.getParameter("depName");--%>
-        <%--String newDepName = new String(newDep.getBytes("iso-8859-1"),"utf-8");--%>
-        <%--request.setAttribute("editDepNameJsp",newDepName);--%>
-    <%--}--%>
-<%--%>--%>
-
 <form action="editDep.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
             <td>部门名称:</td>
-            <td><s:textfield name="depName" value="%{#depId.depName}"/> </td>
-            <td><s:hidden name="depId" value="%{#depId}"/> </td>
+            <td><input type="text" name="depName" value="${model.depName}"/></td>
+            <td><input type="hidden" name="depID" value="${model.depID}"/></td>
         </tr>
     </table>
 </form>

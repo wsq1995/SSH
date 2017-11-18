@@ -26,7 +26,7 @@
 
         <td width="57%" align="right">
             <%--添加职务 --%>
-            <a href="${pageContext.request.contextPath}postDep.action">
+            <a href="${pageContext.request.contextPath}/postDep.action">
                 <img src="${pageContext.request.contextPath}/images/button/tianjia.gif"/>
             </a>
 

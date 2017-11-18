@@ -43,7 +43,7 @@ public class PostAction extends BaseAction<Post, PostService> {
     //    根据部门id找职务
     public String findPostToDepID() {
         List<Post> postId = postService.findPostToDepID(getModel().getDep().getDepID());
-        ActionContext.getContext().getSession().put("postId",postId.get(0));
+        ActionContext.getContext().getSession().put("postId", postId.get(0));
         return SUCCESS;
     }
 

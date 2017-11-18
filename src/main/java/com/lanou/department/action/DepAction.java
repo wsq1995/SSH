@@ -40,9 +40,8 @@ public class DepAction extends BaseAction<Department, DepService> {
 
 //    通过id查找部门
     public String findDepID(){
-        List<Department> depID = service.findDepID(getModel().getDepID());
-        ActionContext.getContext().put("depId",depID.get(0));
-        System.out.println(depID);
+        List<Department> depIDs = service.findDepID(getModel().getDepID());
+        ActionContext.getContext().put("depIdS",depIDs.get(0));
         return SUCCESS;
     }
 
