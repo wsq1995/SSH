@@ -1,5 +1,6 @@
 package com.lanou.post.service;
 
+import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface PostService {
 
     //    根据部门id找职务
     List<Post> findPostToDepID(String depID);
+    //    查询部门
+    List<Department> findDepartment();
 }

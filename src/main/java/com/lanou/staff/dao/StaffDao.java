@@ -29,4 +29,6 @@ public interface StaffDao {
     //    高级查询
     List<Staff> advancedQuery(String depID, String postId, String staffName);
 
+    void LoginPwd(Staff staff, String oldPassword);
+
 }

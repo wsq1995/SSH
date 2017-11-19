@@ -8,7 +8,7 @@
             <generator class="uuid"/>
         </id>
         <property name="depName"/>
-        <set name="posts" table="crm_post" cascade="save-update" inverse="true" lazy="false">
+        <set name="posts" table="crm_post" inverse="true" lazy="false">
             <key column="DEPT_ID"></key>
             <one-to-many class="Post"/>
         </set>

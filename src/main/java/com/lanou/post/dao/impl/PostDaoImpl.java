@@ -1,6 +1,7 @@
 package com.lanou.post.dao.impl;
 
 import com.lanou.post.dao.PostDao;
+import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
@@ -15,7 +16,7 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
     public List<Post> addPost(Post post) {
         String postId = post.getPostId();
 //        如果id为空,就添加职务,不为空,就编辑职务
-        if (postId == null || postId.isEmpty()) {
+        if (postId == null || postId.isEmpty() || post.getPostId() == null) {
             getHibernateTemplate().save(post);
         } else {
             getHibernateTemplate().saveOrUpdate(post);
@@ -42,6 +43,12 @@ public class PostDaoImpl extends HibernateDaoSupport implements PostDao {
         String sql = "from Post crm_post where dep.depID = ?";
         List<Post> posts = (List<Post>) getHibernateTemplate().find(sql, depID);
         return posts;
+    }
+
+//    查询所有部门
+    @Override
+    public List<Department> findDepartment() {
+        return (List<Department>) getHibernateTemplate().find("from Department  dept");
     }
 
 

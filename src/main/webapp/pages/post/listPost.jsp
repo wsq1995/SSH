@@ -26,7 +26,7 @@
 
         <td width="57%" align="right">
             <%--添加职务 --%>
-            <a href="${pageContext.request.contextPath}/postDep.action">
+            <a href="${pageContext.request.contextPath}/findDepartment.action">
                 <img src="${pageContext.request.contextPath}/images/button/tianjia.gif"/>
             </a>
 
@@ -52,7 +52,7 @@
             <td align="center">${p.dep.depName}</td>
             <td align="center">${p.postName}</td>
             <td width="7%" align="center">
-                <a href="findPostToDepID.action?postId=${p.postId}&postName=${p.postName}&dep.depID=${p.dep.depID}&dep.depName=${p.dep.depName}">
+                <a href="findPostToDepID.action?postId=${p.postId}&postName=${p.postName}&dep.depID=${p.dep.depID}">
                     <img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>
                 </a>
             </td>

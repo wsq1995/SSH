@@ -30,19 +30,25 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
     private List<Staff> staffs;
     private List<Post> posts1;
     private List<Department> deps;
+    private String reNewPassword;
+    private String newPassword;
+    private String oldPassword;
 
-    //    这个是editStaff.jsp页面取到的值
+    // 这个是editStaff.jsp页面取到的值
     private Staff staffId1;
+
 
     //    登录
     public String login() {
-        getModel().setLoginPwd(MD5Util.MD5(getModel().getLoginPwd()));
+//        getModel().setLoginPwd(MD5Util.MD5(getModel().getLoginPwd()));
         staffs = staffService.login(getModel());
         sessionPut("loginName", staffs.get(0).getLoginName());
+        sessionPut("staff",staffs.get(0));
         if (staffs.isEmpty()) {
             addFieldError("msg", "请登录");
             return INPUT;
         } else return SUCCESS;
+
     }
 
     //    查询员工
@@ -101,7 +107,23 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
         return SUCCESS;
     }
 
+
+    //更改密码
+    @SkipValidation
+    public String updateLoginPwd() {
+        Staff sta = (Staff) ActionContext.getContext().getSession().get("sta");
+        if (!oldPassword.equals(sta.getLoginPwd()) || !newPassword.equals(reNewPassword)) {
+            addActionError("密码输入错误");
+            return ERROR;
+        } else {
+            service.LoginPwd(sta, reNewPassword);
+            return SUCCESS;
+        }
+    }
+
+
     //    重新登录
+    @SkipValidation
     public String reLogin() {
         ActionContext.getContext().getSession().remove("loginName");
         return "success";
@@ -148,6 +170,27 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
         return posts1;
     }
 
+    public String getNewPassword() {
+        return newPassword;
+    }
 
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
 
+    public String getReNewPassword() {
+        return reNewPassword;
+    }
+
+    public void setReNewPassword(String reNewPassword) {
+        this.reNewPassword = reNewPassword;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
 }

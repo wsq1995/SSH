@@ -2,6 +2,7 @@ package com.lanou.post.service.impl;
 
 import com.lanou.post.dao.PostDao;
 import com.lanou.post.service.PostService;
+import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
 
 import java.util.List;
@@ -32,6 +33,12 @@ public class PostServiceImpl implements PostService{
     @Override
     public List<Post> findPostToDepID(String depID) {
         return postDao.findPostToDepID(depID);
+    }
+
+//    查询所有部门
+    @Override
+    public List<Department> findDepartment() {
+        return postDao.findDepartment();
     }
 
 

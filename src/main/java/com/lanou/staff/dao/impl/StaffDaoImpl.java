@@ -104,11 +104,21 @@ public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
             return (List<Staff>) getHibernateTemplate().find(sql5, depID, staffName);
 
 //            都不为空
-        } else{
+        } else {
             String sql6 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ? and staffName = ?";
             return (List<Staff>) getHibernateTemplate().find(sql6, depID, postId, staffName);
         }
     }
 
+    @Override
+    public void LoginPwd(Staff staff, String oldPassword) {
+        List<Staff> staffList = (List<Staff>) getHibernateTemplate().find("from Staff staff where staff.loginName=?", staff.getLoginName());
+        if (staffList.size() > 0) {
+            Staff staff1 = staffList.get(0);
+            staff1.setLoginPwd(oldPassword);
+            getHibernateTemplate().update(staff1);
+        }
 
+
+    }
 }

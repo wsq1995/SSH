@@ -50,8 +50,8 @@
             <td class="login_msg" width="400">
                 <form action="staff.action" method="post">
                     <font size="6" color="#ffffff">欢迎使用CRM系统</font><br/><br/>
-                    用户名：<input type="text" name="crm_staffloginName" value="pppp"><br/><br/>
-                    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="loginPwd" value="123"><br/><br/>
+                    用户名：<input type="text" name="loginName" value="rrrrr"><br/><br/>
+                    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="loginPwd" value="789"><br/><br/>
                     <input type="submit" value="登录 "/>
                 </form>
             </td>

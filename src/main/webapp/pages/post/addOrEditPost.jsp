@@ -41,13 +41,13 @@
             <td>
                 <select name="dep.depID">
                     <option value="-1">----请--选--择----</option>
-                    <s:iterator value="deps" var="dep">
-                        <s:if test="%{#dep.depID.equals(#session.postId.dep.depID)}">
-                        <%--<s:if test="dep.depID==depID">--%>
-                            <option value="${dep.depID}" SELECTED="selected">${dep.depName}</option>
+                    <s:iterator value="departmentList" var="dept">
+                        <%--<s:if test="%{#dept.depID.equals(#session.postId.dept.depID)}">--%>
+                        <s:if test="dept.depID==post.dep.depID">
+                            <option value="${dept.depID}" SELECTED="selected">${dept.depName}</option>
                         </s:if>
                         <s:else>
-                            <option value="${dep.depID}">${dep.depName}</option>
+                            <option value="${dept.depID}">${dept.depName}</option>
                         </s:else>
                     </s:iterator>
                 </select>
