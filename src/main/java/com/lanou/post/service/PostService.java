@@ -2,12 +2,15 @@ package com.lanou.post.service;
 
 import com.lanou.staff.domain.Department;
 import com.lanou.staff.domain.Post;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by dllo on 17/11/11.
  */
+
+
 public interface PostService {
     //    添加职务
     List<Post> addPost(Post post);

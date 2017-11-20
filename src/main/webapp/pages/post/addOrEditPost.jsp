@@ -33,7 +33,10 @@
         <td width="3%" align="right"><img src="${pageContext.request.contextPath}/images/tright.gif"/></td>
     </tr>
 </table>
-
+<%
+    String depID = request.getParameter("depID");
+    session.setAttribute("depID",depID);
+%>
 <form action="addPost.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
@@ -42,8 +45,7 @@
                 <select name="dep.depID">
                     <option value="-1">----请--选--择----</option>
                     <s:iterator value="departmentList" var="dept">
-                        <%--<s:if test="%{#dept.depID.equals(#session.postId.dept.depID)}">--%>
-                        <s:if test="dept.depID==post.dep.depID">
+                        <s:if test="#dept.depID==#session.depID">
                             <option value="${dept.depID}" SELECTED="selected">${dept.depName}</option>
                         </s:if>
                         <s:else>

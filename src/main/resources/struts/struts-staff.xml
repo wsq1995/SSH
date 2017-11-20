@@ -24,10 +24,13 @@
         <action name="listStaffToJson" class="staffAction" method="findPostByDepID">
             <result name="success" type="json">
                 <!--指定需要转化成json的对象-->
-                <param name="root">posts1</param>
+                <param name="root">post1</param>
                 <!--过滤:剔除员工里面部门的职位属性,剔除员工里面部门的员工属性,剔除员工里面职位的员工属性,
                 剔除员工里面职位的部门属性-->
-                <param name="includeProperties">\[\d\]\.postId,\[\d\]\.postName</param>
+                <param name="includeProperties">
+                    \[\d\]\.postId,
+                    \[\d\]\.postName
+                </param>
             </result>
         </action>
 
@@ -53,7 +56,11 @@
         <!--高级查询-->
         <action name="advancedQuery" class="staffAction" method="advancedQuery">
             <result name="success" type="json">
-                <param name="root">staffs</param>
+                <param name="root">staffList</param>
+                <param name="excludeProperties">
+                    \[\d\]\.post\.staffs,
+                    \[\d\]\.post\.dep\.posts
+                </param>
             </result>
         </action>
 
@@ -70,8 +77,7 @@
         </action>
 
 
-        <action name="page_action"
-                class="staffAction">
+        <action name="page_action" class="staffAction">
             <result name="success">/pages/staff/updPwd.jsp</result>
         </action>
 

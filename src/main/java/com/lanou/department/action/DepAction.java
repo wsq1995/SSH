@@ -1,18 +1,17 @@
 package com.lanou.department.action;
-
-import com.lanou.base.BaseAction;
 import com.lanou.department.dao.DepDao;
 import com.lanou.department.service.DepService;
 import com.lanou.staff.domain.Department;
+import com.lanou.staff.utils.BaseAction;
 import com.opensymphony.xwork2.ActionContext;
+import org.springframework.context.annotation.Scope;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * Created by dllo on 17/11/10.
  */
-
+@Scope("prototype")
 public class DepAction extends BaseAction<Department, DepService> {
 
     private List<Department> deps;

@@ -75,41 +75,37 @@ public class StaffDaoImpl extends HibernateDaoSupport implements StaffDao {
     @Override
     public List<Staff> advancedQuery(String depID, String postId, String staffName) {
 //        三个都为空
-        if (depID == null || depID.isEmpty() && postId == null ||
-                postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+        if (depID.equals("")&&postId.equals("")&&staffName.equals("")) {
             String sql1 = "from Staff crm_staff";
             return (List<Staff>) getHibernateTemplate().find(sql1);
+        }
 //            前一个不为空,后两个为空
-        } else if (depID != null || !depID.isEmpty() && postId == null ||
-                postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+        if (postId.equals("")&&staffName.equals("")) {
             String sql2 = "from Staff crm_staff where post.dep.depID = ?";
             return (List<Staff>) getHibernateTemplate().find(sql2, depID);
-
+        }
 //            前两个为空,后一个不为空
-        } else if (depID == null || depID.isEmpty() && postId == null ||
-                postId.isEmpty() && staffName != null || !staffName.isEmpty()) {
-            String sql3 = "from Staff crm_staff where staffName = ?";
-            return (List<Staff>) getHibernateTemplate().find(sql3, staffName);
-
+        if (depID.equals("")&&postId.equals("")) {
+            String sql3 = "from Staff crm_staff where staffName like ?";
+            return (List<Staff>) getHibernateTemplate().find(sql3, "%"+staffName+"%");
+        }
 //            前两个不为空,后一个为空
-        } else if (depID != null || !depID.isEmpty() && postId != null ||
-                !postId.isEmpty() && staffName == null || staffName.isEmpty()) {
+        if (staffName.equals("")) {
             String sql4 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ?";
             return (List<Staff>) getHibernateTemplate().find(sql4, depID, postId);
-
-//            前一后一不为空,中间为空
-        } else if (depID != null || !depID.isEmpty() && postId == null ||
-                postId.isEmpty() && staffName != null || !staffName.isEmpty()) {
-            String sql5 = "from Staff crm_staff where post.dep.depID = ? and staffName = ?";
-            return (List<Staff>) getHibernateTemplate().find(sql5, depID, staffName);
-
-//            都不为空
-        } else {
-            String sql6 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ? and staffName = ?";
-            return (List<Staff>) getHibernateTemplate().find(sql6, depID, postId, staffName);
         }
+//            前一后一不为空,中间为空
+        if (postId.equals("")) {
+            String sql5 = "from Staff crm_staff where post.dep.depID = ? and staffName like ?";
+            return (List<Staff>) getHibernateTemplate().find(sql5, depID, "%"+staffName+"%");
+        }
+//            都不为空
+        String sql6 = "from Staff crm_staff where post.dep.depID = ? and post.postId = ? and staffName like ?";
+        return (List<Staff>) getHibernateTemplate().find(sql6, depID, postId, "%"+staffName+"%");
+
     }
 
+    //    更改密码
     @Override
     public void LoginPwd(Staff staff, String oldPassword) {
         List<Staff> staffList = (List<Staff>) getHibernateTemplate().find("from Staff staff where staff.loginName=?", staff.getLoginName());

@@ -33,7 +33,7 @@
                     for (var i = 0; i < length; i++) {
                         serverSelect.removeChild(optionEle[0]);
                     }
-                    serverSelect.innerHTML = "<option value='-1'>--请选择职务--</option>";
+                    serverSelect.innerHTML = "<option value=''>--请选择职务--</option>";
                     // 将json数据插入到option中
                     for (var j = 0; j < json.length; j++) {
                         // 创建一个option标签
@@ -49,7 +49,7 @@
                     }
                 }
             });
-            xhr.open("POST", "http://localhost:8080/listStaffToJson.action");
+            xhr.open("POST", "listStaffToJson.action");
             xhr.send(data);
         }
     </script>
@@ -77,7 +77,7 @@
             return td;
         }
 
-        //当点击查询按钮的时候会执行
+        //当点击高级查询按钮的时候会执行
         function condition() {
             var data = new FormData();
             data.append("post.dep.depID", document.getElementById("department").value);
@@ -90,6 +90,7 @@
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
                     console.log(this.responseText);
+//                    解析json数据
                     json = eval("(" + this.responseText + ")");
 
                     serverSelect = document.getElementById("tb");
@@ -110,7 +111,7 @@
                     }
                 }
             });
-            xhr.open("POST", "http://localhost:8080/advancedQuery.action");
+            xhr.open("POST", "advancedQuery.action");
             xhr.send(data);
         }
     </script>
@@ -140,13 +141,13 @@
 </table>
 
 <!-- 查询条件：马上查询 -->
-<form id="conditionFormId" action="${pageContext.request.contextPath}/staff/staffAction_findAll" method="post">
+<form id="conditionFormId" method="post">
     <table width="88%" border="0" style="margin: 20px;">
         <tr>
             <td width="10%">部门：</td>
             <td width="20%">
                 <select name="depID" onchange="changePost(value)" id="department">
-                    <option value="-1">----请--选--择----</option>
+                    <option value="">----请--选--择----</option>
                     <s:iterator value="deps" var="d">
                         <option value="${d.depID}">${d.depName}</option>
                     </s:iterator>
@@ -156,11 +157,11 @@
             <td width="8%">职务：</td>
             <td width="62%">
                 <select id="posts" name="postId">
-                    <option value="-1">----请--选--择----</option>
+                    <option value="">----请--选--择----</option>
                 </select>
             </td>
             <td width="80px">姓名：</td>
-            <td width="100px"><input type="text" name="staffName" size="12" id="staffName"/></td>
+            <td width="100px"><input type="text" name="staffName" size="12" id="staffName" value=""/></td>
             <td></td>
         </tr>
     </table>

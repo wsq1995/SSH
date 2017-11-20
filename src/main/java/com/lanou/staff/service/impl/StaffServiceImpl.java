@@ -54,14 +54,15 @@ public class StaffServiceImpl implements StaffService {
         return staffDao.findStaffId(staffId);
     }
 
+    //    高级查询
     @Override
     public List<Staff> advancedQuery(String depID, String postId, String staffName) {
-        return staffDao.advancedQuery(depID,postId,staffName);
+        return staffDao.advancedQuery(depID, postId, staffName);
     }
 
     @Override
     public void LoginPwd(Staff staff, String oldPassword) {
-         staffDao.LoginPwd(staff,oldPassword);
+        staffDao.LoginPwd(staff, oldPassword);
     }
 
     public void setStaffDao(StaffDao staffDao) {

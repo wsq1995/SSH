@@ -11,7 +11,7 @@
         <property name="postDao" ref="postDao"/>
     </bean>
 
-    <bean id="postAction" class="com.lanou.post.action.PostAction">
-        <property name="postService" ref="postService"/>
+    <bean id="postAction" class="com.lanou.post.action.PostAction" scope="prototype">
+      <property name="service" ref="postService"/>
     </bean>
 </beans>

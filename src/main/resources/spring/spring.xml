@@ -29,9 +29,39 @@
         <property name="staffDao" ref="staffDao"/>
     </bean>
 
-    <bean id="staffAction" class="com.lanou.staff.action.StaffAction">
+    <bean id="staffAction" class="com.lanou.staff.action.StaffAction" scope="prototype">
         <property name="service" ref="staffService"/>
     </bean>
+
+
+
+    <!--<bean id="postDao" class="com.lanou.post.dao.impl.PostDaoImpl">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="postService" class="com.lanou.post.service.impl.PostServiceImpl">-->
+        <!--<property name="postDao" ref="postDao"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="postAction" class="com.lanou.post.action.PostAction">-->
+        <!--<property name="service" ref="postService"/>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="depDao" class="com.lanou.department.dao.impl.DepDaoImpl">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<bean id="depService" class="com.lanou.department.service.impl.DepServiceImpl">-->
+        <!--<property name="depDao" ref="depDao"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="depAction" class="com.lanou.department.action.DepAction">-->
+        <!--<property name="service" ref="depService"/>-->
+    <!--</bean>-->
+
+
+
+
 
     <!--创建管理事务对象-->
     <bean id="transactionManager"

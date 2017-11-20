@@ -35,11 +35,11 @@
     </tr>
 </table>
 
-<form action="editDep.action" method="get">
+<form action="save.action" method="get">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
             <td>部门名称:</td>
-            <td><input type="text" name="depName" value="${model.depName}"/></td>
+            <td><input type="text" name="depName" value="${depName}"/></td>
             <td><input type="hidden" name="depID" value="${model.depID}"/></td>
         </tr>
     </table>

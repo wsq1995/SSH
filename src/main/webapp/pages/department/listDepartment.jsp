@@ -44,7 +44,7 @@
         <tr class="tabtd1">
             <td align="center">${d.depName}</td>
             <td width="7%" align="center">
-                <a href="findByDepId.action?depID=${d.depID}">
+                <a href="findByDepId.action?depID=${d.depID}&depName=${d.depName}">
                     <img src="${pageContext.request.contextPath}/images/button/modif.gif" class="img"/>
                 </a>
             </td>
