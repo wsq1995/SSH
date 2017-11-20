@@ -43,7 +43,7 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
 //        getModel().setLoginPwd(MD5Util.MD5(getModel().getLoginPwd()));
         staffs = staffService.login(getModel());
         sessionPut("loginName", staffs.get(0).getLoginName());
-        sessionPut("staff",staffs.get(0));
+        sessionPut("staffss",staffs.get(0));
         if (staffs.isEmpty()) {
             addFieldError("msg", "请登录");
             return INPUT;
@@ -111,7 +111,7 @@ public class StaffAction extends BaseAction<Staff, StaffService> {
     //更改密码
     @SkipValidation
     public String updateLoginPwd() {
-        Staff sta = (Staff) ActionContext.getContext().getSession().get("sta");
+        Staff sta = (Staff) ActionContext.getContext().getSession().get("staffss");
         if (!oldPassword.equals(sta.getLoginPwd()) || !newPassword.equals(reNewPassword)) {
             addActionError("密码输入错误");
             return ERROR;

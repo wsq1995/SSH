@@ -127,7 +127,7 @@
                                                     <%--是否使用弹出框？ javascript:modifypsw();
                                                     <a href="javascript:void(0)" onclick="javascript:modifypsw();"><font color="ffffff">更改口令</font></a>
                                                     --%>
-                                                    <a href="page_jsp.action"
+                                                    <a href="/pages/staff/updPwd.jsp"
                                                        target="right">
                                                         <font color="ffffff">更改密码</font>
                                                     </a>

@@ -70,7 +70,8 @@
         </action>
 
 
-        <action name="page_jsp">
+        <action name="page_action"
+                class="staffAction">
             <result name="success">/pages/staff/updPwd.jsp</result>
         </action>
 
